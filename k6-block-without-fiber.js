@@ -11,6 +11,6 @@ export const options = {
 
 export default function () {
   group('sleep 5 seconds - without fiber', function () {
-    http.get('http://localhost:3000/simulate/block_no_fiber?sleep=5');
+    http.get('http://localhost:3000/simulate/block-no-fiber?sleep=5');
   });
 }
