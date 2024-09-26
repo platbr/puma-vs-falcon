@@ -6,7 +6,7 @@ export const options = {
   stages: [
     { duration: '60s', target: 30 }
   ],
-  gracefulRampDown: '60s'
+  gracefulRampDown: '600s'
 };
 
 export default function () {
