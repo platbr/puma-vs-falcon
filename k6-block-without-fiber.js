@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { group } from 'k6'
+import { check, group } from 'k6'
 export const options = {
   executor: 'ramping-vus',
   startVUs: 30,
@@ -11,6 +11,6 @@ export const options = {
 
 export default function () {
   group('sleep 5 seconds - without fiber', function () {
-    http.get('http://localhost:3000/simulate/block-no-fiber?sleep=5');
+    check(http.get('http://localhost:3000/simulate/block-no-fiber?sleep=5'));
   });
 }
