@@ -1,12 +1,9 @@
 import http from 'k6/http';
 import {check, group } from 'k6'
 export const options = {
-  executor: 'ramping-vus',
-  startVUs: 30,
-  stages: [
-    { duration: '60s', target: 30 }
-  ],
-  gracefulRampDown: '600s'
+  executor: 'constant-vus',
+  vus: 60,
+  duration: '60s',
 };
 
 export default function () {
