@@ -3,11 +3,14 @@ Run falcon
 
 ```bundle exec falcon host```
 
-Then run ```./test.sh``` and ```./test2.sh```
-
+or
 
 Run puma
 
 ```bundle exec rails server```
 
-Then run ```./test.sh``` and ```./test2.sh```
+Then run
+
+k6 run k6-block-with-fiber.js
+k6 run k6-block-without-fiber.js
+k6 run k6-non-block.js

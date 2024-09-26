@@ -11,6 +11,8 @@ export const options = {
 
 export default function () {
   group('sleep 5 seconds - without fiber', function () {
-    check(http.get('http://localhost:3000/simulate/block-no-fiber?sleep=5'));
+    check(http.get('http://localhost:3000/simulate/block-no-fiber?sleep=5'),{
+      'response code was 200': (res) => res.status == 200,
+    });
   });
 }
