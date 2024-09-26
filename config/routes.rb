@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   get 'simulate/block', to: 'simulate#block'
   get 'simulate/non-block', to: 'simulate#non_block'
+  get 'simulate/block-no-fiber', to: 'simulate#block_no_fiber'
 end
