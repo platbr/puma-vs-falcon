@@ -29,7 +29,7 @@
     * Essa liberação permite que *outras threads Ruby* executem enquanto a original aguarda o I/O.
 * **O Trade-off:**
     * Trocamos um paralelismo real (em CPU-bound tasks) por maior segurança e simplicidade no desenvolvimento do core do Ruby.
-    * Lembre-se: Muitos bugs de segurança são causados por *race conditions*. **Safety first!**
+    * Muitos bugs de segurança são causados por *race conditions*. **Safety first!**
 
 ---
 
@@ -78,7 +78,7 @@
 ### 1. Cada Requisição em uma Thread ou Processo
 
 * **Puma (modelo baseado em Threads)**
-    * Iniciado com um número configurável de threads (e.g., `threads min, max` no `config/puma.rb`).
+    * Iniciado com um número configurável de threads.
     * Quando uma requisição HTTP chega, o Puma aloca uma das threads livres do seu pool.
     * Essa thread executa todo o ciclo da requisição Rails: middleware → controller → view → resposta.
     * Ao terminar, a thread volta para o pool, pronta para outra requisição.
@@ -87,7 +87,7 @@
     * Faz *pre-fork* de N processos Ruby no início. Cada processo filho é uma VM Ruby completa com sua própria heap (memória).
     * Cada processo filho aceita e processa **uma requisição por vez**.
     * Executa todo o stack Rails e, ao terminar, fica pronto para a próxima.
-    * Geralmente, não há múltiplas threads de aplicação *dentro* de cada processo filho do Unicorn (embora o Ruby internamente possa usar threads para I/O, isso é menos explorado no modelo Unicorn).
+    * Ao terminar, a processo volta pronto para outra requisição.
 
 ---
 
@@ -103,7 +103,7 @@
     * Se uma query ao banco de dados demora 100 ms, aquela thread/processo permanece inativa por 100 ms.
     * Para manter uma alta taxa de requisições por segundo (RPS), é necessário aumentar o número de threads (Puma) ou processos (Unicorn).
     * **Limite do GIL:** No Puma, devido ao GIL, aumentar o número de threads além de um certo ponto traz retornos decrescentes ou até negativos para a performance geral, devido à contenção do GIL e overhead de troca de contexto.
-    * É dificil encontrar um balanço adequado da quantidade correta de threads em um sistema que possua rotas com diferentes características (CPU bound x IO Bound).
+    * É dificil encontrar um balanço adequado da quantidade correta de threads em um sistema que possua rotas com diferentes características (CPU bound x I/O Bound).
 
 ---
 
@@ -150,7 +150,7 @@
 | Puma     | 50      | 8910                     | 101.08ms                  | 107.44ms                    |
 
 * *Observação: Falcon usa 1 processo/thread, mas múltiplas Fibers internamente.*
-* *Neste cenário CPU-bound, Puma com 1 thread tem um throughput ligeiramente maior, mas observe a latência p95.*
+* *Neste cenário sem I/O, Puma com 1 thread tem um throughput ligeiramente maior, mas observe a latência p95.*
 
 ---
 
@@ -287,7 +287,7 @@
 # Slide 20: Por que Falcon é uma Mudança de Paradigma para Rails?
 
 * **Menos Recursos, Mais Performance:** Lida com mais conexões concorrentes com menos processos/threads, economizando memória e CPU que seriam gastos com o overhead das Threads.
-* **Latência Previsível:** Reduz picos de latência, crucial para a experiência do usuário e SLAs.
+* **Latência Previsível:** Reduz picos de latência, crucial para a experiência do usuário.
 * **Escalabilidade Simplificada:** Menos necessidade de ajustar pools de threads complexos; escala melhor com a natureza assíncrona do I/O.
 * **Pronto para o Futuro:** Alinhado com as melhorias de concorrência do Ruby 3+ (Fibers, Ractors em potencial).
 
