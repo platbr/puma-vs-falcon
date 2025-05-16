@@ -294,6 +294,11 @@
 ---
 
 # Slide 21: Perguntas e Discussão
+Estamos contratando!!
+
+Assunto: Vaga Desenvolvedor Ruby
+vagas@baladapp.com.br
+
 
 Obrigado!
 
