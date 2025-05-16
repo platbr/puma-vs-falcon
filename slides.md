@@ -133,7 +133,7 @@
 * **Métricas Chave:**
     * Requests completadas em 30s (Throughput)
     * `http_req_duration` (Latência: avg, p95)
-* ** Ruby 3.3.5 / Puma 6.4.3 / Falcon 0.48.2
+* **Ruby 3.3.5 / Puma 6.4.3 / Falcon 0.48.2
 ---
 
 # Slide 11: Benchmark: Sem Bloqueio de I/O (k6-non-block.js - 30VU)
