@@ -2,6 +2,7 @@
 
 ## Falcon: Um Servidor HTTP Assíncrono para Ruby on Rails
 ### Maximizando Performance e Escalabilidade com Concorrência Eficiente
+![falcon image](https://socketry.github.io/falcon/assets/logo.webp)
 
 ---
 
