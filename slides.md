@@ -135,7 +135,7 @@
 
 ---
 
-# Slide 11: Benchmark: Sem Bloqueio de I/O Externo (k6-non-block.js - 30VU)
+# Slide 11: Benchmark: Sem Bloqueio de I/O (k6-non-block.js - 30VU)
 
 | Servidor | Threads | Reqs Completadas (30s) | `http_req_duration` (avg) | `http_req_duration` (p95) |
 | :------- | :------ | :----------------------- | :------------------------ | :-------------------------- |
@@ -150,7 +150,7 @@
 | Puma     | 50      | 8910                     | 101.08ms                  | 107.44ms                    |
 
 * *Observação: Falcon usa 1 processo/thread, mas múltiplas Fibers internamente.*
-* *Neste cenário sem I/O, Puma com 1 thread tem um throughput ligeiramente maior, mas observe a latência p95.*
+* *Neste cenário sem I/O, Puma com 1 thread tem um throughput ligeiramente maior, mas observe a latência p95, Ela só fica aceitável quando há pelo menos 1 thread por VU, e ainda assim com um tempo de resposta superior.*
 
 ---
 
