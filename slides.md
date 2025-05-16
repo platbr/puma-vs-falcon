@@ -150,7 +150,7 @@
 | Puma     | 50      | 8910                     | 101.08ms                  | 107.44ms                    |
 
 * *Observação: Falcon usa 1 processo/thread, mas múltiplas Fibers internamente.*
-* *Neste cenário sem I/O, Puma com 1 thread tem um throughput ligeiramente maior, mas observe a latência p95, Ela só fica aceitável quando há pelo menos 1 thread por VU, e ainda assim com um tempo de resposta superior.*
+* *Neste cenário sem I/O, Puma com 1 thread tem um throughput ligeiramente maior, mas observe a latência p95, Ela só fica aceitável quando há pelo menos 1 thread por VU, e ainda assim com um tempo de resposta superior ao Falcon.*
 
 ---
 
@@ -289,7 +289,7 @@
 * **Menos Recursos, Mais Performance:** Lida com mais conexões concorrentes com menos processos/threads, economizando memória e CPU que seriam gastos com o overhead das Threads.
 * **Latência Previsível:** Reduz picos de latência, crucial para a experiência do usuário.
 * **Escalabilidade Simplificada:** Menos necessidade de ajustar pools de threads complexos; escala melhor com a natureza assíncrona do I/O.
-* **Pronto para o Futuro:** Alinhado com as melhorias de concorrência do Ruby 3+ (Fibers, Ractors em potencial).
+* **Pronto para o Futuro:** Alinhado com as melhorias de concorrência do Ruby 3+
 
 ---
 
