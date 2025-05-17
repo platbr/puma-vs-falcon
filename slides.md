@@ -294,12 +294,23 @@
 
 ---
 
-# Slide 21: Perguntas e Discussão
+# Slide 21: Tópicos práticos
+* Pool de conexões deve ser maior do que no puma
+* Uso de memória na prática deve aumentar
+* Não se esqueça de ter statement timeout sempre definido
+* Jobs ainda devem ser usados principalmente para controlar rotinas pesadas
+* Streaming de dados e tecnologias como ActionCable passam a ser viaveis em maior escala
+
+---
+
+# Slide 22: Perguntas e Discussão
 Estamos contratando!!
 
 Assunto: Vaga Desenvolvedor Ruby
-vagas@baladapp.com.br
 
+Email: vagas@baladapp.com.br
+
+Temos tempo? Bora falar de outros assuntos relacionados a escalabilidade?
 
 Obrigado!
 
